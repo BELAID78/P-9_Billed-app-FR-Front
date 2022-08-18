@@ -1,6 +1,7 @@
 import { ROUTES_PATH } from '../constants/routes.js'
 import Logout from "./Logout.js"
 
+const isPicture = (file) => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'].includes(file.type);
 export default class NewBill {
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
@@ -24,6 +25,17 @@ export default class NewBill {
     const email = JSON.parse(localStorage.getItem("user")).email
     formData.append('file', file)
     formData.append('email', email)
+
+    if(!isPicture(file)) {
+      //show message error
+      alert("le format du fichier sélectionné n'est pas pris en charge");
+
+      //empty the input type="file"
+      document.querySelector('[data-testid="file"]').value = '';
+
+      //stop the function by return false value
+      return false;
+    }
 
     this.store
       .bills()
