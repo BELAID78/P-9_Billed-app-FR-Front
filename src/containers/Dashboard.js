@@ -145,7 +145,11 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
+    let status = ['pending', 'accepted', 'refused'];
+
+    let currentBills = bills.filter(bill => bill.status === status[(index - 1)] && bill.name !== '');
+
+    currentBills.forEach(bill => {
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
     })
 
