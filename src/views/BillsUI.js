@@ -12,6 +12,7 @@ const row = (bill) => {
       <td>${bill.date}</td>
       <td>${bill.amount} €</td>
       <td>${bill.status}</td>
+      <td>${bill.fileName}</td>
       <td>
         ${Actions(bill.fileUrl)}
       </td>
@@ -65,6 +66,7 @@ export default ({ data: bills, loading, error }) => {
                 <th>Date</th>
                 <th>Montant</th>
                 <th>Statut</th>
+                <th>File Name</th>
                 <th>Actions</th>
               </tr>
           </thead>
