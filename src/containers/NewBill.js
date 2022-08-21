@@ -28,7 +28,7 @@ export default class NewBill {
 
     if(!isPicture(file)) {
       //show message error
-      alert("le format du fichier sélectionné n'est pas pris en charge");
+      console.log("le format du fichier sélectionné n'est pas pris en charge");
 
       //empty the input type="file"
       document.querySelector('[data-testid="file"]').value = '';
